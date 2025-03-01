@@ -54,7 +54,7 @@ The coordinator will distribute the work among the agents to crack each hash. Ch
 docker compose logs coordinator
 ```
 
-## Additional Notes
+### Output
 
 The coordinator writes output to /app/output inside the container, which is mapped to your Desktop.
 To stop all services, run:
