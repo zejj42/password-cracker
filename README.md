@@ -4,12 +4,12 @@
 
 A **coordinator** that manages incoming CSV files containing MD5 hashes and distributes the work.
 Multiple **agent** containers that each process a portion of the phone-number search space to find the matching password.
-hash hash Running the Project
+## Running the Project
 
-#Clone This Repository
+# Clone This Repository
 
 ```bash
-git clone <repo_url>
+git clone https://github.com/zejj42/password-cracker
 cd password_cracker
 ```
 
@@ -27,19 +27,15 @@ Spin Up the Containers
 docker compose up --scale agent=4 -d
 ```
 
-Runs 1 coordinator container on port 8000.
-Runs 4 agent containers (from the same agent image) on the Docker network.
-Runs a Redis container on port 6379.
-Verify Services
+* Runs 1 coordinator container on port 8000.
+* Runs 4 agent containers (from the same agent image) on the **Docker network**.
+* Runs a Redis container on port 6379.
 
-The coordinator is available at http://localhost:8000.
-The coordinator communicates with agents using URLs like http://agent:8008 on the Docker network.
-Redis is used for storing progress.
-hash hash Sample CSV Files
+## Sample CSV Files
 
 Inside the root directory, you'll find a folder named csv examples containing sample CSV files (e.g., single_hash.csv, phone_hashes.csv) you can use to test the system.
 
-hash hash Making a Request with Postman
+## Making a Request with Postman
 
 Open Postman and create a new POST request to:
 
@@ -53,9 +49,12 @@ Key: file
 Value: (Select a CSV file from the csv examples folder)
 Send the Request. You should receive a response indicating that the tasks have been scheduled.
 
-The coordinator will distribute the work among the agents to crack each hash. Check the logs (e.g., using docker compose logs coordinator) for progress details. If you've mapped a volume (e.g., ${HOME}/Desktop:/app/output), the generated output CSV file will appear on your Desktop.
+The coordinator will distribute the work among the agents to crack each hash. Check the logs (using either docker desktop or the following command):
+```bash
+docker compose logs coordinator
+```
 
-hash hash Additional Notes
+## Additional Notes
 
 The coordinator writes output to /app/output inside the container, which is mapped to your Desktop.
 To stop all services, run:
