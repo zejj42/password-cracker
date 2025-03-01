@@ -56,8 +56,9 @@ docker compose logs coordinator
 
 # Output
 
-The coordinator writes output to /app/output inside the container, which is mapped to your Desktop.
-To stop all services, run:
+The coordinator writes output to /app/output inside the container, and if you've mapped a volume (e.g., ${HOME}/Desktop:/app/output), the **generated output CSV file will appear on your Desktop.**
+
+## To stop all services, run:
 
 ```bash
 docker compose down
