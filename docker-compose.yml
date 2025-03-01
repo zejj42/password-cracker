@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  coordinator:
+    build:
+      context: ./coordinator    
+    image: coordinator          
+    container_name: coordinator
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - agent
+    environment:
+      REDIS_HOST: "redis"
+      REDIS_PORT: 6379
+      AGENT_URLS: "http://agent:8008"
+    volumes:
+      - "${HOME}/Desktop:/app/output"
+
+  agent:
+    build:
+      context: ./agent
+    image: agent
+    expose:
+      - "8008"
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
