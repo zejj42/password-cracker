@@ -1,7 +1,8 @@
 # Password Cracker
 
-## This project demonstrates a distributed password-cracking service built with Python and Docker. It consists of:
+## This project demonstrates a simple Map Reduce strategy for a distributed password-cracking service run via Docker. 
 
+## It consists of:
 * A **coordinator** that manages incoming CSV files containing MD5 hashes and distributes the work.
 * Multiple **agent** containers that each process a portion of the phone-number search space to find the matching password.
 ## Running the Project
