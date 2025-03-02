@@ -2,8 +2,8 @@
 
 ## This project demonstrates a distributed password-cracking service built with Python and Docker. It consists of:
 
-A **coordinator** that manages incoming CSV files containing MD5 hashes and distributes the work.
-Multiple **agent** containers that each process a portion of the phone-number search space to find the matching password.
+* A **coordinator** that manages incoming CSV files containing MD5 hashes and distributes the work.
+* Multiple **agent** containers that each process a portion of the phone-number search space to find the matching password.
 ## Running the Project
 
 # Clone This Repository
